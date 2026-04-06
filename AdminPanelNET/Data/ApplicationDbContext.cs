@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using AdminPanelNET.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace AdminPanelNET.Data
 {
@@ -12,5 +13,11 @@ namespace AdminPanelNET.Data
             : base(options)
         {
         }
+
+        // Companies table
+        public DbSet<Company> Companies { get; set; }
+
+        // Employees table
+        public DbSet<Employee> Employees { get; set; }
     }
 }

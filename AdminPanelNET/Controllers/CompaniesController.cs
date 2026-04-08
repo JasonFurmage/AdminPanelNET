@@ -8,7 +8,7 @@ namespace AdminPanelNET.Controllers
     // Handles all CRUD actions for Company records.
     public class CompaniesController : Controller
     {
-        // Database context.
+        // Database context injected by ASP.NET Core.
         private readonly ApplicationDbContext _context;
 
         public CompaniesController(ApplicationDbContext context)

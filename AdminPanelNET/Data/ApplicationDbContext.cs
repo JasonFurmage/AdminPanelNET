@@ -19,5 +19,20 @@ namespace AdminPanelNET.Data
 
         // Employees table
         public DbSet<Employee> Employees { get; set; }
+
+
+        // Configure database relationships and rules.
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            // Run EF Core's default configuration first.
+            base.OnModelCreating(modelBuilder);
+
+            // Configure relationship between Employee and Company.
+            modelBuilder.Entity<Employee>()
+                .HasOne(e => e.Company)
+                .WithMany(c => c.Employees)
+                .HasForeignKey(e => e.CompanyId)
+                .OnDelete(DeleteBehavior.SetNull);
+        }
     }
 }

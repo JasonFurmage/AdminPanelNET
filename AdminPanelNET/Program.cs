@@ -8,6 +8,7 @@ builder.Services.AddControllersWithViews();
 
 // Register ApplicationDbContext with ASP.NET Core's dependency injection container.
 // Use SQLite and get connection string called "DefaultConnection" from appsettings.json.
+// Run database seeder during database creation/update in both sync and async scenarios.
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"))
            .UseSeeding((context, _) => DbSeeder.Seed((ApplicationDbContext)context))

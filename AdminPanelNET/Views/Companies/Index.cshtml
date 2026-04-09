@@ -39,8 +39,15 @@
                     <td class="text-break">
                         @Html.DisplayFor(modelItem => item.Email)
                     </td>
-                    <td class="text-break">
-                        @Html.DisplayFor(modelItem => item.Logo)
+                    <td>
+                        @if (!string.IsNullOrWhiteSpace(item.Logo))
+                        {
+                            <img src="@item.Logo" alt="@item.Name logo" class="img-thumbnail" style="max-height: 60px;" />
+                        }
+                        else
+                        {
+                            <span>No logo</span>
+                        }
                     </td>
                     <td class="text-break">
                         @Html.DisplayFor(modelItem => item.Website)

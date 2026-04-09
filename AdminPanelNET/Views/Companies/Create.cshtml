@@ -11,7 +11,7 @@
 
 <div class="row">
     <div class="col-12 col-md-8 col-lg-6">
-        <form asp-action="Create">
+        <form asp-action="Create" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
 
             <div class="form-group mb-3">
@@ -27,9 +27,16 @@
             </div>
 
             <div class="form-group mb-3">
-                <label asp-for="Logo" class="control-label"></label>
-                <input asp-for="Logo" class="form-control" />
-                <span asp-validation-for="Logo" class="text-danger"></span>
+                <label for="logoFile" class="control-label">Logo</label>
+                <input type="file"
+                       id="logoFile"
+                       name="logoFile"
+                       class="form-control"
+                       accept=".jpg,.jpeg,.png,.gif,.webp" />
+                @Html.ValidationMessage("logoFile", "", new { @class = "d-block text-danger" })
+                <small class="form-text text-muted">
+                    Optional. Minimum 100x100 pixels. JPG, JPEG, PNG, GIF, or WEBP. Max 2 MB.
+                </small>
             </div>
 
             <div class="form-group mb-3">
